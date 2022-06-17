@@ -11,7 +11,7 @@
         <div class="navbar-nav">
           <router-link class="nav-link" to="/">Home</router-link>
           <router-link class="nav-link" to="/about">About</router-link>
-          <router-link class="nav-link" to="">Manufacturers</router-link>
+          <router-link class="nav-link" to="/mates">Mates</router-link>
           <router-link class="nav-link" to="">Flavours</router-link>
           <router-link class="nav-link" to="">Find Drinks near You</router-link>
         </div>
