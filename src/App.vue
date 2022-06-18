@@ -1,10 +1,11 @@
 <template>
+  <div>
   <navbar></navbar>
-  <router-view/>
+  <router-view></router-view>
+  </div>
 </template>
 
 <script>
-// eslint-disable-next-line import/extensions
 import Navbar from '@/components/Navbar'
 
 export default {
