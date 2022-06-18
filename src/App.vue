@@ -5,12 +5,12 @@
 
 <script>
 // eslint-disable-next-line import/extensions
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/Navbar'
 
 export default {
   name: 'NavBar',
-  components: { Navbar },
-};
+  components: { Navbar }
+}
 </script>
 
 <style>

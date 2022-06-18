@@ -1,30 +1,30 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import MateView from '@/views/MateView.vue';
-import HomeView from '../views/HomeView.vue';
-import AboutView from '../views/AboutView.vue';
+import { createRouter, createWebHistory } from 'vue-router'
+import MateView from '@/views/MateView.vue'
+import HomeView from '../views/HomeView.vue'
+import AboutView from '../views/AboutView.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView,
+    component: HomeView
   },
   {
     path: '/about',
     name: 'about',
-    component: AboutView,
+    component: AboutView
   },
   {
     path: '/mates',
     name: 'mates',
-    component: MateView,
-  },
-];
+    component: MateView
+  }
+]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   linkActiveClass: 'active',
-  routes,
-});
+  routes
+})
 
-export default router;
+export default router
