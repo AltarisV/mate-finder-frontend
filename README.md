@@ -1,3 +1,5 @@
+[![JavaScript CI with npm](https://github.com/SpiegelV/mate-finder-frontend/actions/workflows/npm.yml/badge.svg)](https://github.com/SpiegelV/mate-finder-frontend/actions/workflows/npm.yml)
+
 # mate-finder-frontend
 
 Mate-Finder: A University project for the Business Computing 3rd semester-course "Web Technologies". 
