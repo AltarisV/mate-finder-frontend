@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import MateView from '@/views/MateView.vue'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
+import FlavoursView from '@/views/FlavoursView'
+import FinderView from '@/views/FinderView'
 
 const routes = [
   {
@@ -18,6 +20,16 @@ const routes = [
     path: '/mates',
     name: 'mates',
     component: MateView
+  },
+  {
+    path: '/flavours',
+    name: 'flavours',
+    component: FlavoursView
+  },
+  {
+    path: '/finder',
+    name: 'finder',
+    component: FinderView
   }
 ]
 
