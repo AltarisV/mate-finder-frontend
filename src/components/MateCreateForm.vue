@@ -30,8 +30,15 @@
               Looks good!
             </div>
           </div>
+          <div v-if="this.serverValidationMessages">
+            <ul>
+              <li v-for="(message, index) in serverValidationMessages" :key="index" style="color: red">
+                {{ message }}
+              </li>
+            </ul>
+          </div>
           <div class="mt-5">
-            <button class="btn btn-primary me-3" type="submit" @click="createMate">Create</button>
+            <button class="btn btn-primary me-3" type="submit" @click.prevent="createMate">Create</button>
             <button class="btn btn-danger" type="reset">Reset</button>
           </div>
         </form>
@@ -53,21 +60,22 @@ export default {
   emits: ['created'],
   methods: {
     async createMate () {
-      if (this.validate()) {
+      const valid = this.validate()
+      if (valid) {
         const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/mates'
 
-        const myHeaders = new Headers()
-        myHeaders.append('Content-Type', 'application/json')
+        const headers = new Headers()
+        headers.append('Content-Type', 'application/json')
 
-        const payload = JSON.stringify({
+        const mate = JSON.stringify({
           name: this.MateName,
           price: this.price
         })
 
         const requestOptions = {
           method: 'POST',
-          headers: myHeaders,
-          body: payload,
+          headers: headers,
+          body: mate,
           redirect: 'follow'
         }
         const response = await fetch(endpoint, requestOptions)
@@ -88,23 +96,9 @@ export default {
       }
     },
     validate () {
-      let valid = true
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      const forms = document.querySelectorAll('.needs-validation')
-
-      // Loop over them and prevent submission
-      Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-          if (!form.checkValidity()) {
-            valid = false
-            event.preventDefault()
-            event.stopPropagation()
-          }
-
-          form.classList.add('was-validated')
-        }, false)
-      })
-      return valid
+      const form = document.getElementById('mate-create-form')
+      form.classList.add('was-validated')
+      return form.checkValidity()
     }
   }
 }
