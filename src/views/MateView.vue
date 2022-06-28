@@ -14,21 +14,39 @@
           </div>
         </div>
       </div>
+    <mate-create-form @created="addMate"></mate-create-form>
   </div>
 </template>
 
 <script>
+import MateCreateForm from '@/components/MateCreateForm'
+
 export default {
   name: 'MateView',
+  components: {
+    MateCreateForm
+  },
   data () {
     return {
       mates: []
     }
   },
-
+  methods: {
+    addMate (mateLocation) {
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + mateLocation
+      const requestOptions = {
+        method: 'GET',
+        redirect: 'follow'
+      }
+      fetch(endpoint, requestOptions)
+        .then(response => response.json())
+        .then(person => this.mates.push(person))
+        .catch(error => console.log('error', error))
+    }
+  },
   mounted () {
     console.log('Hello World')
-    const endpoint = `${process.env.VUE_APP_BACKEND_BASE_URL}/api/mates`
+    const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/mates'
     const requestOptions = {
       method: 'GET',
       redirect: 'follow'
