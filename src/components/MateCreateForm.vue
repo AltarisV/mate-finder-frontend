@@ -5,7 +5,7 @@
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="mate-create-offcanvas" aria-labelledby="offcanvas-label">
       <div class="offcanvas-header">
-        <h5 id="offcanvas-label">Create new Mate</h5>
+        <h5 id="offcanvas-label">Create a new Mate</h5>
         <button type="button" id="close-offcanvas" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -74,7 +74,7 @@ export default {
 
         const requestOptions = {
           method: 'POST',
-          headers: headers,
+          headers,
           body: mate,
           redirect: 'follow'
         }

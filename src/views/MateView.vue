@@ -1,31 +1,25 @@
 <template>
   <div>
-    <h1>Here are the Mate Drinks we know.</h1>
+    <h1>Here are the Mate Drinks we know</h1>
+    <div class="container-fluid">
       <div class="row row-cols-1 row-cols-md-4 g-4">
         <div class="col" v-for="mate in mates" :key="mate.id">
-          <div class="card" style="width: 18rem;">
-            <img :src="getImage(mate.name)" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">{{ mate.name }}</h5>
-              <h6 class="card-subtitle mb-2 text-muted">Preis: {{ mate.price }}</h6>
-              <p class="card-text">User Rating: Mate/10</p>
-              <a href="#" class="card-link">Add to Favourites</a>
-              <a href="#" class="card-link">Rate this Mate</a>
-              <button type="button" class="btn btn-danger" @click="deleteMate(mate.id)">Delete</button>
-            </div>
-          </div>
+          <mate-card :mate="mate"></mate-card>
         </div>
       </div>
+    </div>
     <mate-create-form @created="addMate"></mate-create-form>
   </div>
 </template>
 
 <script>
+import MateCard from '@/components/MateCard'
 import MateCreateForm from '@/components/MateCreateForm'
 
 export default {
   name: 'MateView',
   components: {
+    MateCard,
     MateCreateForm
   },
   data () {
@@ -42,24 +36,7 @@ export default {
       }
       fetch(endpoint, requestOptions)
         .then(response => response.json())
-        .then(person => this.mates.push(person))
-        .catch(error => console.log('error', error))
-    },
-    getImage (mateName) {
-      try {
-        return require('../assets/' + mateName + '.png')
-      } catch (error) {
-        return require('../assets/DefaultMate.jpg')
-      }
-    },
-    deleteMate (mateLocation) {
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/mates/' + mateLocation
-      const requestOptions = {
-        method: 'DELETE',
-        redirect: 'follow'
-      }
-      fetch(endpoint, requestOptions)
-        .then(response => response.json())
+        .then(mate => this.mates.push(mate))
         .catch(error => console.log('error', error))
     }
   },
