@@ -4,6 +4,7 @@
       <div class="row row-cols-1 row-cols-md-4 g-4">
         <div class="col" v-for="mate in mates" :key="mate.id">
           <div class="card" style="width: 18rem;">
+            <img :src="getImage(mate.name)" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title">{{ mate.name }}</h5>
               <h6 class="card-subtitle mb-2 text-muted">Preis: {{ mate.price }}</h6>
@@ -43,6 +44,9 @@ export default {
         .then(response => response.json())
         .then(person => this.mates.push(person))
         .catch(error => console.log('error', error))
+    },
+    getImage (mateName) {
+      return require('../assets/' + mateName + '.png')
     },
     deleteMate (mateLocation) {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/mates/' + mateLocation
