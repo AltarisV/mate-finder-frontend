@@ -5,7 +5,7 @@
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="mate-create-offcanvas" aria-labelledby="offcanvas-label">
       <div class="offcanvas-header">
-        <h5 id="offcanvas-label">New Person</h5>
+        <h5 id="offcanvas-label">Create new Mate</h5>
         <button type="button" id="close-offcanvas" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -38,8 +38,8 @@
             </ul>
           </div>
           <div class="mt-5">
-            <button class="btn btn-primary me-3" type="submit" @click.prevent="createMate">Create</button>
-            <button class="btn btn-danger" type="reset">Reset</button>
+            <button class="btn btn-primary me-3 text-reset" type="submit" @click.prevent="createMate">Create</button>
+            <button class="btn btn-danger text-reset" type="reset" id="reset-offcanvas">Reset</button>
           </div>
         </form>
       </div>
@@ -86,6 +86,7 @@ export default {
       if (response.ok) {
         this.$emit('created', response.headers.get('location'))
         document.getElementById('close-offcanvas').click()
+        document.getElementById('reset-offcanvas').click()
       } else if (response.status === 400) {
         response = await response.json()
         response.errors.forEach(error => {
