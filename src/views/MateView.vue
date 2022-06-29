@@ -46,7 +46,11 @@ export default {
         .catch(error => console.log('error', error))
     },
     getImage (mateName) {
-      return require('../assets/' + mateName + '.png')
+      try {
+        return require('../assets/' + mateName + '.png')
+      } catch (error) {
+        return require('../assets/defaultMate.jpg')
+      }
     },
     deleteMate (mateLocation) {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/mates/' + mateLocation
