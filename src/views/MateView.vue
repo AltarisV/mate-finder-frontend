@@ -49,7 +49,7 @@ export default {
       try {
         return require('../assets/' + mateName + '.png')
       } catch (error) {
-        return require('../assets/defaultMate.jpg')
+        return require('../assets/DefaultMate.jpg')
       }
     },
     deleteMate (mateLocation) {
