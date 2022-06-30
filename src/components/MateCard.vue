@@ -5,7 +5,12 @@
       <div class="card-body">
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Preis: {{ mate.price }}€</li>
-          <li class="list-group-item">User Rating: x/10</li>
+          <li class="list-group-item">User Rating:<fa icon="star" style="color: #f8cd0b"/>
+            <fa icon="star" style="color: #f8cd0b"/>
+            <fa icon="star" style="color: #f8cd0b"/>
+            <fa icon="star" style="color: #f8cd0b"/>
+            <fa icon="star" style="color: #f8cd0b"/>
+          </li>
           <li class="list-group-item">
             <p>
               <a class="btn btn-primary" data-bs-toggle="collapse" :href="'#collapse'+ mate.id" role="button" aria-expanded="false" :aria-controls="'collapse' + mate.id">
@@ -13,8 +18,12 @@
               </a>
             </p>
             <div class="collapse" :id="'collapse'+ mate.id">
-              <div class="card card-body">
-                Put some Stars in here!
+              <div align="center">
+                <fa icon="star" style="color: #f8cd0b"/>
+                <fa icon="star" style="color: #f8cd0b"/>
+                <fa icon="star" style="color: #f8cd0b"/>
+                <fa icon="star" style="color: #f8cd0b"/>
+                <fa icon="star" style="color: #f8cd0b"/>
               </div>
             </div>
           </li>
