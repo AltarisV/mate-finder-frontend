@@ -8,15 +8,14 @@
           <li class="list-group-item">User Rating: x/10</li>
           <li class="list-group-item">
             <p>
-              <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              <a class="btn btn-primary" data-bs-toggle="collapse" :href="'#collapse'+ mate.id" role="button" aria-expanded="false" :aria-controls="'collapse' + mate.id">
                 Rate this Mate
               </a>
             </p>
-            <div class="collapse" id="collapseExample">
+            <div class="collapse" :id="'collapse'+ mate.id">
               <div class="card card-body">
                 Put some Stars in here!
               </div>
-              <a></a>
             </div>
           </li>
         </ul>
@@ -26,7 +25,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'MateCard',
   props: {

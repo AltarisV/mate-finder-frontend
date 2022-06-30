@@ -14,7 +14,7 @@
             <label for="mate-name" class="form-label">Mate-Name</label>
             <input type="text" class="form-control" id="mate-name" v-model="MateName" required>
             <div class="invalid-feedback">
-              Please provide the name of the Mate
+              Please provide the name of the Mate.
             </div>
             <div class="valid-feedback">
               Looks good!
@@ -24,7 +24,7 @@
             <label for="price" class="form-label">Preis</label>
             <input type="text" class="form-control" id="price" v-model="price" required>
             <div class="invalid-feedback">
-              Please provide the price of the Mate as a decimal-value
+              Please provide the price of the Mate as a decimal-value.
             </div>
             <div class="valid-feedback">
               Looks good!

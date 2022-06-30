@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Here are the Mate Drinks we know</h1>
+    <h1>Here are the Mate Drinks we know.</h1>
     <div class="container-fluid">
       <div class="row row-cols-1 row-cols-md-4 g-4">
         <div class="col" v-for="mate in mates" :key="mate.id">
