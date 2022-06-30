@@ -41,7 +41,6 @@ export default {
     }
   },
   mounted () {
-    console.log('Hello World')
     const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/mates'
     const requestOptions = {
       method: 'GET',

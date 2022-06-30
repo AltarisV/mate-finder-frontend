@@ -5,7 +5,8 @@
       <div class="card-body">
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Preis: {{ mate.price }}€</li>
-          <li class="list-group-item">User Rating:<fa icon="star" style="color: #f8cd0b"/>
+          <li class="list-group-item">User Rating:
+            <fa icon="star" style="color: #f8cd0b"/>
             <fa icon="star" style="color: #f8cd0b"/>
             <fa icon="star" style="color: #f8cd0b"/>
             <fa icon="star" style="color: #f8cd0b"/>
@@ -18,12 +19,15 @@
               </a>
             </p>
             <div class="collapse" :id="'collapse'+ mate.id">
-              <div align="center">
-                <fa icon="star" style="color: #f8cd0b"/>
-                <fa icon="star" style="color: #f8cd0b"/>
-                <fa icon="star" style="color: #f8cd0b"/>
-                <fa icon="star" style="color: #f8cd0b"/>
-                <fa icon="star" style="color: #f8cd0b"/>
+              <div>
+                <fa icon="star" style="color: #f8cd0b" @click="rateMate(mate.id, 1)"/>
+                <fa icon="star" style="color: #f8cd0b" @click="rateMate(mate.id, 2)"/>
+                <fa icon="star" style="color: #f8cd0b" @click="rateMate(mate.id, 3)"/>
+                <fa icon="star" style="color: #f8cd0b" @click="rateMate(mate.id, 4)"/>
+                <fa icon="star" style="color: #f8cd0b" @click="rateMate(mate.id, 5)"/>
+              </div>
+              <div class="collapse">
+                <button type="button" :id="'btnRate'+mate.id" class="btn btn-success btn-confirm">Confirm Review</button>
               </div>
             </div>
           </li>
@@ -59,6 +63,30 @@ export default {
       fetch(endpoint, requestOptions)
         .then(response => response.json())
         .catch(error => console.log('error', error))
+    },
+    rateMate (mateId, rating) {
+      const parent = document.querySelector('#collapse' + mateId)
+      const starsWrapper = parent.children[0].children
+      for (let i = 0; i < starsWrapper.length; ++i) {
+        if (i < rating) {
+          starsWrapper[i].children[0].setAttribute('fill', 'currentColor')
+          continue
+        }
+        starsWrapper[i].children[0].setAttribute('fill', '')
+      }
+      const btnCollapsable = parent.querySelector('.collapse')
+      if (btnCollapsable === null) return
+      const show = btnCollapsable.classList.contains('show') ? false : 'show'
+      if (!show) return
+      btnCollapsable.classList.remove(...btnCollapsable.classList)
+      btnCollapsable.classList.add('collapsing')
+      setTimeout(() => {
+        const height = btnCollapsable.firstChild.clientHeight + 'px'
+        btnCollapsable.style = 'height: ' + height
+      }, 10)
+      setTimeout(() => {
+        btnCollapsable.classList.add('collapse', show)
+      }, 340)
     }
   }
 }
