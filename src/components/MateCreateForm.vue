@@ -22,7 +22,7 @@
           </div>
           <div class="mb-3">
             <label for="price" class="form-label">Preis</label>
-            <input type="text" class="form-control" id="price" v-model="price" required>
+            <input type="number" step="any" min="0.01" class="form-control" id="price" v-model="price" required>
             <div class="invalid-feedback">
               Please provide the price of the Mate as a decimal-value.
             </div>
@@ -69,7 +69,7 @@ export default {
 
         const mate = JSON.stringify({
           name: this.MateName,
-          price: this.price
+          price: Math.round(this.price * 100) / 100
         })
 
         const requestOptions = {
