@@ -4,7 +4,7 @@
       <img :src="getImage(mate.name)" class="card-img-top" alt="">
       <div class="card-body">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Preis: {{ mate.price }}€</li>
+          <li class="list-group-item">Price: {{ mate.price }}€</li>
           <li class="list-group-item">User Rating:
             <fa icon="star" style="color: #f8cd0b"/>
             <fa icon="star" style="color: #f8cd0b"/>

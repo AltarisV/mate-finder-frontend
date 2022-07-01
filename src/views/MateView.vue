@@ -1,25 +1,21 @@
 <template>
   <div>
     <h1>Here are the Mate Drinks we know.</h1>
-    <div class="container-fluid">
-      <div class="row row-cols-1 row-cols-md-4 g-4">
-        <div class="col" v-for="mate in mates" :key="mate.id">
-          <mate-card :mate="mate"></mate-card>
-        </div>
+      <div class="container-fluid">
+        <mate-card-list :mates="this.mates"></mate-card-list>
       </div>
-    </div>
     <mate-create-form @created="addMate"></mate-create-form>
   </div>
 </template>
 
 <script>
-import MateCard from '@/components/MateCard'
+import MateCardList from '@/components/MateCardList'
 import MateCreateForm from '@/components/MateCreateForm'
 
 export default {
   name: 'MateView',
   components: {
-    MateCard,
+    MateCardList,
     MateCreateForm
   },
   data () {
