@@ -1,21 +1,21 @@
-// import { mount } from '@vue/test-utils'
-// import MateCard from '@/components/MateCard'
-// import MateCardList from '@/components/MateCardList'
+import { mount } from '@vue/test-utils'
+import MateCard from '@/components/MateCard'
+import MateCardList from '@/components/MateCardList'
 
-/* describe('Testing MateCardList', () => {
+describe('Testing MateCardList', () => {
   it('should render a mate card for each mate', () => {
     const wrapper = mount(MateCardList, {
       propsData: {
-        persons: [
+        mates: [
           {
             id: 1,
             name: 'Club-Mate',
-            price: '1.19'
+            price: 1.19
           },
           {
             id: 2,
             name: 'Ulticha Mate',
-            price: '1.29'
+            price: 1.29
           }
         ]
       }
@@ -24,4 +24,4 @@
     const mateCards = wrapper.findAllComponents(MateCard)
     expect(mateCards.length).toBe(2)
   })
-}) */
+})
