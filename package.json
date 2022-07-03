@@ -48,7 +48,6 @@
     "eslint-plugin-vuejs-accessibility": "^1.1.0",
     "jest": "^27.0.5",
     "jest-fetch-mock": "^3.0.3",
-    "vue3-geolocation": "^1.0.0",
-    "vue3-google-map": "^0.13.2"
+    "vue3-geolocation": "^1.0.0"
   }
 }
