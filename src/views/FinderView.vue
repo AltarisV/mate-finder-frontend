@@ -83,7 +83,7 @@ export default {
   },
   methods: {
     findMate () {
-      const URL = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + this.myCoordinates.lat + encodeURIComponent(',') + this.myCoordinates.lng + '&type=supermarket&radius=5000&key=AIzaSyCjJgSzZu0QC8QFrfSfbLZhqJPcclz9xlI'
+      const URL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + this.myCoordinates.lat + encodeURIComponent(',') + this.myCoordinates.lng + '&type=supermarket&radius=5000&key=AIzaSyCjJgSzZu0QC8QFrfSfbLZhqJPcclz9xlI'
       axios.get(URL)
         .then((response) => {
           this.places = response.data.results
