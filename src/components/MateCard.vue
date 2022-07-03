@@ -32,7 +32,7 @@
             </div>
           </li>
         </ul>
-        <button type="button" class="btn btn-danger" @click="deleteMate(mate.id)">Delete</button>
+<!--        <button type="button" class="btn btn-danger" @click="deleteMate(mate.id)">Delete</button>-->
       </div>
     </div>
 </template>
@@ -54,7 +54,7 @@ export default {
         return require('../assets/DefaultMate.png')
       }
     },
-    deleteMate (mateLocation) {
+    /*    deleteMate (mateLocation) {
       const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/mates/' + mateLocation
       const requestOptions = {
         method: 'DELETE',
@@ -63,7 +63,7 @@ export default {
       fetch(endpoint, requestOptions)
         .then(response => response.json())
         .catch(error => console.log('error', error))
-    },
+    }, */
     rateMate (mateId, rating) {
       const parent = document.querySelector('#collapse' + mateId)
       const starsWrapper = parent.children[0].children
