@@ -107,11 +107,5 @@ export default {
 </script>
 
 <style scoped>
-.sticky-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px 15px;
-  border-radius: 30px;
-}
+
 </style>
