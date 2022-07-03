@@ -17,5 +17,6 @@ module.exports = {
     'vue'
   ],
   rules: {
+    'prefer-const': 'off'
   }
 }
