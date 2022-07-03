@@ -2,20 +2,52 @@
 <div>
   <h1>Find out where to grab some Mate near you!</h1>
   <div>
-    <h1>Your coordinates:</h1>
-    <p>{{ myCoordinates.lat.toFixed(3) }} Latitude, {{ myCoordinates.lng.toFixed(3) }} Longitude</p>
+    <h3>Watch the magic happen:</h3>
+    <button type="button" class="btn btn-primary" @click="findMate">Activate MateFinder!</button>
+      <GMapMap
+          :center="myCoordinates"
+          :zoom="zoom"
+          style="width: 100vw; height: 500px"
+          ref="mapRef">
+        <GMapMarker
+          :key ="marker.id"
+          v-for="marker in markers"
+          :position="marker.position"
+          :icon= '{
+          url: "https://drinkmate-finder.herokuapp.com/img/Club-Mate.5859593a.png",
+          scaledSize: {width: 77, height: 77},
+          labelOrigin: {x: 16, y: -10}
+          }'
+          :clickable="true"
+          :draggable="false"
+          @click="openMarker(marker.id)">
+          <GMapInfoWindow
+            :closeclick="true"
+            @closeclick="openMarker(null)"
+            :opened="openedMarkerID === marker.id">
+            <div>
+              <h5>{{marker.name}}</h5>
+              <p>{{marker.address}}</p>
+            </div>
+          </GMapInfoWindow>
+        </GMapMarker>
+        <GMapMarker
+          :position="myCoordinates"
+          :icon='{
+          url: "https://www.nicepng.com/png/full/128-1280406_view-user-icon-png-user-circle-icon-png.png",
+          scaledSize: {width: 40, height: 40},
+          labelOrigin: {x: 16, y: -10}
+          }'
+          :clickable="false"
+          :draggable="false"
+        />
+      </GMapMap>
   </div>
-  <GMapMap
-    :center="myCoordinates"
-    :zoom="zoom"
-    style="width: 100vw; height: 500px"
-    ref="mapRef"
-    @dragend="handleDrag"
-  ></GMapMap>
 </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'FinderView',
   data () {
@@ -25,41 +57,54 @@ export default {
         lat: 0,
         lng: 0
       },
-      zoom: 15
+      zoom: 15,
+      places: [],
+      markers: [
+        {
+          id: 'id',
+          position: {
+            lat: 0,
+            lng: 0
+          },
+          name: 'name',
+          address: 'address'
+        }
+      ],
+      openedMarkerID: null
     }
   },
   created () {
-    // use saved data if exists
-    if (localStorage.center) {
-      this.myCoordinates = JSON.parse(localStorage.center)
-    } else {
-      // get user coordinates from browser request
-      this.$getLocation({})
-        .then(coordinates => {
-          this.myCoordinates = coordinates
-        })
-        .catch(error => alert(error))
-    }
-    if (localStorage.zoom) {
-      this.zoom = parseInt(localStorage.zoom)
-    }
-  },
-  mounted () {
-    // add map to data object
-    // eslint-disable-next-line no-return-assign
-    this.$refs.mapRef.$mapPromise.then(map => this.map = map)
+    // get user coordinates from browser request
+    this.$getLocation({})
+      .then(coordinates => {
+        this.myCoordinates = coordinates
+      })
+      .catch(error => alert(error))
   },
   methods: {
-    handleDrag () {
-      // get user map data and store in localstorage
-      let center = {
-        lat: this.map.getCenter().lat().toFixed(3),
-        lng: this.map.getCenter().lng().toFixed(3)
-      }
-      let zoom = this.map.getZoom()
-
-      localStorage.center = JSON.stringify(center)
-      localStorage.zoom = zoom
+    findMate () {
+      const URL = 'https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + this.myCoordinates.lat + encodeURIComponent(',') + this.myCoordinates.lng + '&type=supermarket&radius=5000&key=AIzaSyCjJgSzZu0QC8QFrfSfbLZhqJPcclz9xlI'
+      axios.get(URL)
+        .then((response) => {
+          this.places = response.data.results
+          this.showPlacesOnMap()
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    showPlacesOnMap () {
+      this.places.forEach((place) => {
+        const lat = place.geometry.location.lat
+        const lng = place.geometry.location.lng
+        const id = place.place_id
+        const name = place.name
+        const address = place.vicinity
+        this.markers[this.markers.length] = { id, position: { lat, lng }, name, address }
+      })
+    },
+    openMarker (id) {
+      this.openedMarkerID = id
     }
   }
 }

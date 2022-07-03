@@ -38,6 +38,7 @@
     "@vue/eslint-config-airbnb": "^6.0.0",
     "@vue/test-utils": "^2.0.0-0",
     "@vue/vue3-jest": "^27.0.0-alpha.1",
+    "axios": "^0.27.2",
     "babel-jest": "^27.0.6",
     "eslint": "^8.18.0",
     "eslint-config-standard": "^17.0.0",
