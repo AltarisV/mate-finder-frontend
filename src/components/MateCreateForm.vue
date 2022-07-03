@@ -1,6 +1,7 @@
 <template>
   <div>
-    <button class="btn btn-success sticky-button" data-bs-toggle="offcanvas" data-bs-target="#mate-create-offcanvas" aria-controls="#mate-create-offcanvas">
+<!--    <button type="button" class="btn btn-success" data-bs-toggle="offcanvas" data-bs-target="#mate-create-offcanvas" aria-controls="#mate-create-offcanvas">-->
+    <button type="button" class="btn btn-success" data-bs-toggle="offcanvas" data-bs-target="#mate-create-offcanvas" aria-controls="#mate-create-offcanvas">Add a Mate!
       <i class="bi bi-mate-plus-fill"></i>
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="mate-create-offcanvas" aria-labelledby="offcanvas-label">

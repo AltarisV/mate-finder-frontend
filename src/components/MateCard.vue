@@ -25,6 +25,7 @@
                 <fa icon="star" style="color: #f8cd0b" @click="rateMate(mate.id, 3)"/>
                 <fa icon="star" style="color: #f8cd0b" @click="rateMate(mate.id, 4)"/>
                 <fa icon="star" style="color: #f8cd0b" @click="rateMate(mate.id, 5)"/>
+                {{ selectedRating }}
               </div>
               <div class="collapse">
                 <button type="button" :id="'btnRate'+mate.id" class="btn btn-success btn-confirm">Confirm Review</button>
@@ -44,6 +45,11 @@ export default {
     mate: {
       type: Object,
       required: true
+    }
+  },
+  data () {
+    return {
+      selectedRating: 5
     }
   },
   methods: {
@@ -67,6 +73,7 @@ export default {
     rateMate (mateId, rating) {
       const parent = document.querySelector('#collapse' + mateId)
       const starsWrapper = parent.children[0].children
+      this.selectedRating = rating
       for (let i = 0; i < starsWrapper.length; ++i) {
         if (i < rating) {
           starsWrapper[i].children[0].setAttribute('fill', 'currentColor')

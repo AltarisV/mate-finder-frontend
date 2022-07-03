@@ -1,10 +1,12 @@
 <template>
   <div>
     <h1>Here are the Mate Drinks we know.</h1>
+    <h3>Not seeing your favourite Mate Drink? Add it here!</h3>
+    <div><mate-create-form @created="addMate"></mate-create-form></div>
+    <p />
       <div class="container-fluid">
         <mate-card-list :mates="this.mates"></mate-card-list>
       </div>
-    <mate-create-form @created="addMate"></mate-create-form>
   </div>
 </template>
 
