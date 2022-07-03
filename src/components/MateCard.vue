@@ -1,7 +1,7 @@
 <template>
     <div class="card h-100" style="width: 18rem;">
       <h5 class="card-header">{{ mate.name }}</h5>
-      <img :src="getImage(mate.name)" class="card-img-top" alt="">
+      <img :src="getImage(mate.name)" class="card-img-top" alt="" width="300" height="300">
       <div class="card-body">
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Price: {{ mate.price }}€</li>
