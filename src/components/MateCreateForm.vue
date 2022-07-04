@@ -60,6 +60,8 @@ export default {
   },
   emits: ['created'],
   methods: {
+
+    // creates mate
     async createMate () {
       const valid = this.validate()
       if (valid) {
@@ -97,6 +99,7 @@ export default {
         this.serverValidationMessages.push('Unknown error occurred')
       }
     },
+    // validates mates created
     validate () {
       const form = document.getElementById('mate-create-form')
       form.classList.add('was-validated')

@@ -6,7 +6,7 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item">Price: {{ mate.price.toFixed(2) }}€</li>
           <li class="list-group-item">User Rating:
-            <fa icon="star" style="color: #f8cd0b"/>
+            <fa icon="star" style="color: #f8cd0b"/> 5
           </li>
           <li class="list-group-item">
             <p>
@@ -53,6 +53,7 @@ export default {
     }
   },
   methods: {
+    // gets image from assets
     getImage (mateName) {
       try {
         return require('../assets/matepics/' + mateName + '.png')
@@ -70,6 +71,8 @@ export default {
         .then(response => response.json())
         .catch(error => console.log('error', error))
     }, */
+    // dynamically changes stars when clicking on them.
+    // when clicking on the leftmost one, greys out the 4 on the right, etc.
     rateMate (mateId, rating) {
       const parent = document.querySelector('#collapse' + mateId)
       const starsWrapper = parent.children[0].children

@@ -77,7 +77,7 @@ export default {
     }
   },
   created () {
-    // get user coordinates from browser request
+    // get user coordinates from in-browser request
     this.$getLocation({})
       .then(coordinates => {
         this.myCoordinates = coordinates
@@ -85,6 +85,8 @@ export default {
       .catch(error => alert(error))
   },
   methods: {
+    // fetches the users nearest supermarkets that might or might not sell mate.
+    // (the MateFinder is a notorious liar)
     findMate () {
       const URL = 'https://cors-proxy-webtech.herokuapp.com/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + this.myCoordinates.lat + encodeURIComponent(',') + this.myCoordinates.lng + '&type=supermarket&radius=5000&key=AIzaSyCjJgSzZu0QC8QFrfSfbLZhqJPcclz9xlI'
       axios.get(URL)
@@ -96,6 +98,7 @@ export default {
           console.log(error)
         })
     },
+    // marks the found supermarkets on the map
     showPlacesOnMap () {
       this.places.forEach((place) => {
         const lat = place.geometry.location.lat
@@ -106,6 +109,7 @@ export default {
         this.markers[this.markers.length] = { id, position: { lat, lng }, name, address }
       })
     },
+    // opens the mate-markers when clicked on
     openMarker (id) {
       this.openedMarkerID = id
     }
