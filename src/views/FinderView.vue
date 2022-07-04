@@ -122,6 +122,5 @@ button{
 }
 #finderDiv{
   margin-top: 2%;
-  opacity: 90%;
 }
 </style>

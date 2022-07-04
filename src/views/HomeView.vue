@@ -1,7 +1,7 @@
 <template>
   <div id="body">
     <div class="home">
-      <img alt="Vue logo" src="../assets/logo.png">
+      <img id="logo" alt="Vue logo" src="../assets/logo.png">
       <HelloWorld msg="Welcome to Mate-Finder, your place for rating and finding Mate-Softdrinks."/>
     </div>
   </div>
@@ -33,6 +33,10 @@ export default {
   padding:0;
   position: absolute;
   overflow:auto;
+}
+
+#logo{
+  opacity: 100%;
 }
 
 .home{

@@ -7,10 +7,6 @@
           <li class="list-group-item">Price: {{ mate.price.toFixed(2) }}€</li>
           <li class="list-group-item">User Rating:
             <fa icon="star" style="color: #f8cd0b"/>
-            <fa icon="star" style="color: #f8cd0b"/>
-            <fa icon="star" style="color: #f8cd0b"/>
-            <fa icon="star" style="color: #f8cd0b"/>
-            <fa icon="star" style="color: #f8cd0b"/>
           </li>
           <li class="list-group-item">
             <p>

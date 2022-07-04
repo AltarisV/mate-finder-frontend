@@ -22,7 +22,8 @@ export default {
   },
   data () {
     return {
-      mates: []
+      mates: [],
+      ratings: []
     }
   },
   methods: {
@@ -51,6 +52,19 @@ export default {
         this.mates.push(mate)
       }))
       .catch((error) => console.log('error', error))
+
+    const ratingsEndpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/ratings'
+    const ratingsRequestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    }
+
+    fetch(ratingsEndpoint, ratingsRequestOptions)
+      .then((response) => response.json())
+      .then((result) => result.forEach((rating) => {
+        this.mates.push(rating)
+      }))
+      .catch((error) => console.log('error', error))
   }
 }
 </script>
@@ -65,7 +79,6 @@ export default {
   font-weight: normal;
   color:#1E1E24;
   padding: 30px;
-  opacity: 90%;
 }
 
 #buttonAdd{
