@@ -4,7 +4,7 @@
       <img :src="getImage(mate.name)" class="card-img-top" alt="" width="300" height="300">
       <div class="card-body">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">Price: {{ mate.price }}€</li>
+          <li class="list-group-item">Price: {{ mate.price.toFixed(2) }}€</li>
           <li class="list-group-item">User Rating:
             <fa icon="star" style="color: #f8cd0b"/>
             <fa icon="star" style="color: #f8cd0b"/>
@@ -59,9 +59,9 @@ export default {
   methods: {
     getImage (mateName) {
       try {
-        return require('../assets/' + mateName + '.png')
+        return require('../assets/matepics/' + mateName + '.png')
       } catch (error) {
-        return require('../assets/DefaultMate.png')
+        return require('../assets/matepics/DefaultMate.png')
       }
     },
     /*    deleteMate (mateLocation) {
