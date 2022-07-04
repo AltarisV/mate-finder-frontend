@@ -23,9 +23,9 @@
                 <fa icon="star" style="color: #f8cd0b" @click="rateMate(mate.id, 5)"/>
                 {{ selectedRating }}
               </div>
-              <div class="collapse">
+<!--              <div class="collapse">
                 <button type="button" :id="'btnRate'+mate.id" class="btn btn-success btn-confirm">Confirm Review</button>
-              </div>
+              </div>-->
             </div>
           </li>
         </ul>

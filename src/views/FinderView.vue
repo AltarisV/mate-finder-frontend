@@ -3,7 +3,7 @@
     <div id="finderDiv">
       <h1>Find out where to grab some Mate near you!</h1>
       <div>
-        <h3>Watch the magic happen:</h3>
+        <h3>Watch the magic happen (and maybe wait a few seconds):</h3>
         <button type="button" class="btn btn-primary" @click="findMate">Activate MateFinder!</button>
         <GMapMap
           :center="myCoordinates"
