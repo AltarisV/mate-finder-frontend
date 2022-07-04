@@ -22,7 +22,7 @@
             </div>
           </div>
           <div class="mb-3">
-            <label for="price" class="form-label">Preis</label>
+            <label for="price" class="form-label">Price</label>
             <input type="number" step="any" min="0.01" class="form-control" id="price" v-model="price" required>
             <div class="invalid-feedback">
               Please provide the price of the Mate as a decimal-value.

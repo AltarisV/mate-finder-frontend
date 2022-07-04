@@ -45,6 +45,10 @@ export default {
     mate: {
       type: Object,
       required: true
+    },
+    rating: {
+      type: Object,
+      required: false
     }
   },
   data () {
