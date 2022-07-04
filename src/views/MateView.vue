@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div id="mateViewPage">
     <h1>Here are the Mate Drinks we know.</h1>
     <h3>Not seeing your favourite Mate Drink? Add it here!</h3>
-    <div><mate-create-form @created="addMate"></mate-create-form></div>
+    <div id="buttonAdd"><mate-create-form @created="addMate"></mate-create-form></div>
     <p />
-      <div class="container-fluid">
+      <div id="mateContainer" class="container-fluid">
         <mate-card-list :mates="this.mates"></mate-card-list>
       </div>
   </div>
@@ -56,5 +56,18 @@ export default {
 </script>
 
 <style scoped>
+#mateContainer{
+  margin:2%;
+  padding:0;
+}
 
+#mateViewPage{
+  font-weight: normal;
+  color:#1E1E24;
+  padding: 30px;
+  opacity: 90%;
+}
+
+#buttonAdd{
+  margin-top:20px;}
 </style>

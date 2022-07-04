@@ -1,49 +1,52 @@
 <template>
-<div>
-  <h1>Find out where to grab some Mate near you!</h1>
-  <div>
-    <h3>Watch the magic happen:</h3>
-    <button type="button" class="btn btn-primary" @click="findMate">Activate MateFinder!</button>
-      <GMapMap
+  <div id="finderBody">
+    <div id="finderDiv">
+      <h1>Find out where to grab some Mate near you!</h1>
+      <div>
+        <h3>Watch the magic happen:</h3>
+        <button type="button" class="btn btn-primary" @click="findMate">Activate MateFinder!</button>
+        <GMapMap
           :center="myCoordinates"
           :zoom="zoom"
-          style="width: 100vw; height: 500px"
+          style="width: 70vw; height: 500px; margin-left: 15%; border-radius: 30px;"
           ref="mapRef">
-        <GMapMarker
-          :key ="marker.id"
-          v-for="marker in markers"
-          :position="marker.position"
-          :icon= '{
+          <GMapMarker
+            :key ="marker.id"
+            v-for="marker in markers"
+            :position="marker.position"
+            :icon= '{
           url: "https://drinkmate-finder.herokuapp.com/img/Club-Mate.5859593a.png",
           scaledSize: {width: 77, height: 77},
           labelOrigin: {x: 16, y: -10}
           }'
-          :clickable="true"
-          :draggable="false"
-          @click="openMarker(marker.id)">
-          <GMapInfoWindow
-            :closeclick="true"
-            @closeclick="openMarker(null)"
-            :opened="openedMarkerID === marker.id">
-            <div>
-              <h5>{{marker.name}}</h5>
-              <p>{{marker.address}}</p>
-            </div>
-          </GMapInfoWindow>
-        </GMapMarker>
-        <GMapMarker
-          :position="myCoordinates"
-          :icon='{
+            :clickable="true"
+            :draggable="false"
+            @click="openMarker(marker.id)">
+            <GMapInfoWindow
+              :closeclick="true"
+              @closeclick="openMarker(null)"
+              :opened="openedMarkerID === marker.id">
+              <div>
+                <h5>{{marker.name}}</h5>
+                <p>{{marker.address}}</p>
+              </div>
+            </GMapInfoWindow>
+          </GMapMarker>
+          <GMapMarker
+            :position="myCoordinates"
+            :icon='{
           url: "https://www.nicepng.com/png/full/128-1280406_view-user-icon-png-user-circle-icon-png.png",
           scaledSize: {width: 40, height: 40},
           labelOrigin: {x: 16, y: -10}
           }'
-          :clickable="false"
-          :draggable="false"
-        />
-      </GMapMap>
+            :clickable="false"
+            :draggable="false"
+          />
+        </GMapMap>
+      </div>
+    </div>
   </div>
-</div>
+
 </template>
 
 <script>
@@ -111,5 +114,14 @@ export default {
 </script>
 
 <style scoped>
-
+button{
+  margin: 30px;
+  padding:10px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+#finderDiv{
+  margin-top: 2%;
+  opacity: 90%;
+}
 </style>
